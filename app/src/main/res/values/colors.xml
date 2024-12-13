@@ -2,5 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="btnColor">#DC0909</color>
+    <color name="btnColor">#fc4a1a</color>
+    <color name="secColor">#f7b733</color>
+    <color name="gray">#8BD9C2C2</color>
+
+<!--    <color name="btnColor">#c94f4f</color>-->
+<!--    <color name="secColor">#AD1D1D</color>-->
 </resources>

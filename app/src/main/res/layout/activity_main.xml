@@ -10,26 +10,31 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/oneVsOne_btn"
-        style="@style/btnStyle"
-        android:layout_marginStart="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/navBtnStyle"
+        android:background="@drawable/btn_shape"
         android:text="1 vs 1"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        android:textSize="@dimen/_20sp"
+        android:layout_marginBottom="@dimen/_20sp"
+        android:layout_marginHorizontal="@dimen/_20dp"
+        app:layout_constraintBottom_toTopOf="@+id/computer_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/computer_btn"
-        style="@style/btnStyle"
+        style="@style/navBtnStyle"
+        android:background="@drawable/btn_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="computer"
-        android:textSize="20sp"
+        android:textSize="@dimen/_20sp"
+        android:layout_marginHorizontal="@dimen/_20dp"
+        android:layout_marginBottom="@dimen/_80dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/oneVsOne_btn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

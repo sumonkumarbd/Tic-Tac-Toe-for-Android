@@ -1,6 +1,7 @@
 package com.sumonkmr.Tic_Tac_Toe_Game;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer player1Sound, player2Sound, winSound, drawSound, newGameSound;
     AlphaAnimation fadeIn;
     Animation slideInLeft,slideInRight,slideInTop,slideInBottom;
-    LottieAnimationView robot_lottie,happy_lottie;
+    LottieAnimationView robot_lottie,happy_lottie,player2_pro_lottie;
+    VideoView bottom_VideoView;
 
 
     @Override
@@ -79,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
         computer_btn = findViewById(R.id.computer_btn);
         player1_score = findViewById(R.id.player1_score);
         player2_score = findViewById(R.id.player2_score);
+//        bottom_VideoView = findViewById(R.id.bottom_VideoView); // Identifying xml view id (bottom_VideoView) in java as bottom_VideoView.
         robot_lottie = findViewById(R.id.robot_lottie);
         happy_lottie = findViewById(R.id.happy_lottie);
+        player2_pro_lottie = findViewById(R.id.player2_pro_lottie); // Identifying xml view id (player2_pro_lottie) in java as player2_pro_lottie.
 
         player1Sound = MediaPlayer.create(this, R.raw.player1);
         player2Sound = MediaPlayer.create(this, R.raw.player2);
@@ -159,20 +165,38 @@ public class MainActivity extends AppCompatActivity {
     protected void newGame() {
         //===Condition start====
         newGameSound.start();
+        player1Turn = true;
         robot_lottie.setVisibility(View.GONE);
         happy_lottie.setVisibility(View.GONE);
         buttons[0][0].setText("");
+        buttons[0][0].setEnabled(true);
+
         buttons[0][1].setText("");
+        buttons[0][1].setEnabled(true);
+
         buttons[0][2].setText("");
+        buttons[0][2].setEnabled(true);
+
         buttons[1][0].setText("");
+        buttons[1][0].setEnabled(true);
+
         buttons[1][1].setText("");
+        buttons[1][1].setEnabled(true);
+
         buttons[1][2].setText("");
+        buttons[1][2].setEnabled(true);
+
         buttons[2][0].setText("");
+        buttons[2][0].setEnabled(true);
+
         buttons[2][1].setText("");
+        buttons[2][1].setEnabled(true);
+
         buttons[2][2].setText("");
+        buttons[2][2].setEnabled(true);
         count = 0;
-        statusTxt.setText("New Game ");
-        statusTxt2.setText("Start!");
+        statusTxt.setText("Let'");
+        statusTxt2.setText("s Go!");
         statusTxt.startAnimation(slideInLeft);
         statusTxt2.startAnimation(slideInRight);
         runnable = () -> {
@@ -204,5 +228,27 @@ public class MainActivity extends AppCompatActivity {
         button.startAnimation(fadeIn);
 
     }//animateBtn method end!
+
+    //========public Method=========//
+    public void isWinSet(int score, String whoWin){
+        if(score > 2){
+            runnable = () -> {
+                Toast.makeText(this, whoWin+" win the set!", Toast.LENGTH_SHORT).show();
+                first_score = 0;
+                second_score = 0;
+                player1_score.setText("0");
+                player2_score.setText("0");
+            };
+            handler.postDelayed(runnable,1000);
+        }//===Condition end===
+
+    }//isWinSet method end!
+
+
+    //========public Method=========//
+    public int setRandomColor(){
+        Random rnd = new Random();
+        return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
+    }//setRandomColor method end!
 
 }//Main

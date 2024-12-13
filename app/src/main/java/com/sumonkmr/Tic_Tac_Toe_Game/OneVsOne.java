@@ -1,12 +1,17 @@
 package com.sumonkmr.Tic_Tac_Toe_Game;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 import com.sumonkmr.tic_tac_toe_game.R;
 
 public class OneVsOne extends MainActivity {
@@ -28,6 +33,7 @@ public class OneVsOne extends MainActivity {
         restart.setOnClickListener(v -> {
             newGame();
         });
+        player2_pro_lottie.setImageResource(R.drawable.player_2);
 
     }//onCreate
 
@@ -60,8 +66,10 @@ public class OneVsOne extends MainActivity {
                         statusTxt2.startAnimation(slideInRight);
                         winSound.start();
                         player1_score.setText(String.valueOf(++first_score));
+                        isWinSet(first_score,"Player 1 is");
                         runnable = this::newGame;
-                        handler.postDelayed(runnable,3000);
+                        handler.postDelayed(runnable, 3000);
+
                     } else if (checkWin("O")) {
                         statusTxt.setText("Player 2 is ");
                         statusTxt2.setText("Win!");
@@ -69,8 +77,10 @@ public class OneVsOne extends MainActivity {
                         statusTxt2.startAnimation(slideInRight);
                         winSound.start();
                         player2_score.setText(String.valueOf(++second_score));
+                        isWinSet(second_score,"Player 2 is");
                         runnable = this::newGame;
-                        handler.postDelayed(runnable,3000);
+                        handler.postDelayed(runnable, 3000);
+                        //===Condition start====
                     } else if (isBordFull()) {
                         statusTxt.setText("Game is ");
                         statusTxt2.setText("Draw!");
@@ -78,19 +88,17 @@ public class OneVsOne extends MainActivity {
                         statusTxt2.startAnimation(slideInRight);
                         drawSound.start();
                         //===Condition start====
-                        Log.d("count", "count: "+count);
-                        if(count > 8){
+                        if (count > 8) {
                             runnable = this::newGame;
-                            handler.postDelayed(runnable,3000);
+                            handler.postDelayed(runnable, 3000);
                         }//===Condition end===
 
                     }
-
-
                 });
             }
         }//===Loop end!===
 
     }//setBntListener method end!
+
 
 }//OneVsOne

@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
 
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/robot_lottie"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="@dimen/_120dp"
+        android:layout_height="@dimen/_120dp"
         android:visibility="gone"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/statusTxt"
+        android:layout_marginBottom="@dimen/_2dp"
+        app:layout_constraintBottom_toTopOf="@+id/status_lay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
@@ -22,11 +27,11 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/happy_lottie"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
+        android:layout_width="@dimen/_80dp"
+        android:layout_height="@dimen/_80dp"
         android:visibility="gone"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/statusTxt"
+        android:layout_marginBottom="@dimen/_2dp"
+        app:layout_constraintBottom_toTopOf="@+id/status_lay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
@@ -35,139 +40,263 @@
         app:lottie_repeatMode="restart" />
 
 
-    <TextView
-        android:id="@+id/player1tv"
-        style="@style/textVStyles"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/player1"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/player1Img_card_1"
+        android:layout_width="@dimen/_60dp"
+        android:layout_height="@dimen/_60dp"
+        android:layout_marginStart="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="@dimen/_60dp"
+        android:elevation="@dimen/_10dp"
+        >
+        <ImageView
+            android:id="@+id/player1Img"
+            android:layout_width="@dimen/_60dp"
+            android:layout_height="@dimen/_60dp"
+            android:scaleType="centerCrop"
+            android:padding="@dimen/_5dp"
+            android:src="@drawable/game_player"
+            />
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/player1_score"
-        style="@style/textVStyles"
-        android:layout_marginStart="10dp"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/player1tv"
-        app:layout_constraintStart_toEndOf="@+id/player1tv" />
 
-    <TextView
-        android:id="@+id/player2tv"
-        style="@style/textVStyles"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/player2"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/player2Img_card_2"
+        android:layout_width="@dimen/_60dp"
+        android:layout_height="@dimen/_60dp"
+        app:cardCornerRadius="@dimen/_60dp"
+        android:layout_marginEnd="@dimen/_10dp"
+        android:layout_marginTop="@dimen/_10dp"
+        android:elevation="@dimen/_10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/player2_pro_lottie"
+            android:layout_width="@dimen/_60dp"
+            android:layout_height="@dimen/_60dp"
+            app:lottie_rawRes="@raw/eyes"
+            app:lottie_autoPlay="true"
+            app:lottie_repeatMode="restart"
+            app:lottie_loop="true"
+            android:padding="@dimen/_5dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            />
+    </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/player2_score"
-        style="@style/textVStyles"
-        android:layout_marginEnd="10dp"
-        android:text="0"
-        app:layout_constraintBottom_toBottomOf="@+id/player2tv"
-        app:layout_constraintEnd_toStartOf="@+id/player2tv" />
 
 
-    <TextView
-        android:id="@+id/statusTxt"
-        style="@style/statusStyles"
-        android:layout_marginBottom="20dp"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_5dp"
+        android:weightSum="3"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/player1Img_card_1"
+        >
 
 
-    <TextView
-        android:id="@+id/statusTxt2"
-        style="@style/statusStyles"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="@+id/statusTxt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toEndOf="@+id/statusTxt"
-        app:layout_constraintTop_toTopOf="@+id/statusTxt" />
+        <TextView
+            android:id="@+id/player1tv"
+            style="@style/textVStyles"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:gravity="start|center"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingVertical="@dimen/_3dp"
+            android:background="@drawable/line_shape_right_cut"
+            android:text="@string/player1"
+            android:textColor="@color/white"/>
+
+
+
+        <TextView
+            android:id="@+id/player1_score"
+            style="@style/textVStyles"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight=".38"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10dp"
+            android:textSize="@dimen/_30sp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/player1tv"
+            app:layout_constraintStart_toEndOf="@+id/player1tv" />
+
+        <TextView
+            style="@style/textVStyles"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight=".04"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_30sp"
+            android:text="|"
+            app:layout_constraintBottom_toBottomOf="@+id/player1tv"
+            app:layout_constraintStart_toEndOf="@+id/player1tv" />
+
+        <TextView
+            android:id="@+id/player2_score"
+            style="@style/textVStyles"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight=".38"
+            android:textSize="@dimen/_30sp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/player2tv"
+            app:layout_constraintEnd_toStartOf="@+id/player2tv" />
+
+        <TextView
+            android:id="@+id/player2tv"
+            style="@style/textVStyles"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.1"
+            android:gravity="end|center"
+            android:paddingHorizontal="@dimen/_10dp"
+            android:paddingVertical="@dimen/_3dp"
+            android:background="@drawable/line_shape_left_cut"
+            android:textColor="@color/white"
+            android:text="@string/player2"
+            />
+
+    </LinearLayout>
+
+
+
 
     <GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/status_lay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
+        android:columnCount="2"
+        android:rowCount="1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Holder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/statusTxt"
+            style="@style/statusStyles"
+            android:layout_marginEnd="@dimen/_1dp"
+            android:elevation="@dimen/_15dp"
+            android:text="" />
+
+
+        <TextView
+            android:id="@+id/statusTxt2"
+            style="@style/statusStyles"
+            android:layout_marginStart="@dimen/_1dp"
+            android:elevation="@dimen/_15dp"
+            android:text="" />
+    </GridLayout>
+
+
+    <GridLayout
+        android:id="@+id/btn_Holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:columnCount="3"
-        android:padding="20dp"
+        android:padding="@dimen/_20dp"
         android:rowCount="3"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/restart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn1"
-            style="@style/btnStyle" />
+            style="@style/btnStyle"
+            android:background="@drawable/btn_shape"
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn2"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn3"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn4"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn5"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn6"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn7"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn8"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn9"
             style="@style/btnStyle"
-
+            android:background="@drawable/btn_shape"
             />
 
 
     </GridLayout>
 
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_30dp"
+        android:background="@drawable/btn_shape"
+        android:padding="@dimen/_15dp"
+        android:layout_marginStart="@dimen/_10dp"
         android:text="@string/restartGame"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-        app:layout_constraintVertical_bias="0.366" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+<!--    <VideoView-->
+<!--        android:id="@+id/bottom_VideoView"-->
+<!--        android:layout_width="@dimen/_130dp"-->
+<!--        android:layout_height="@dimen/_130dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+
+<!--        />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

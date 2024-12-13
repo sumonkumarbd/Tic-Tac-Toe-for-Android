@@ -2,32 +2,47 @@
     <string name="app_name">Tic Tac Toe</string>
     <string name="statusTxt">"Status "</string>
     <string name="statusTxt2">"Text"</string>
-    <string name="player1">"Player 1 = "</string>
-    <string name="player2">" = Player 2"</string>
+    <string name="player1">"Player 1"</string>
+    <string name="player2">" Player 2"</string>
     <string name="restartGame">"Restart Game"</string>
 
 
     <style name="textVStyles">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/btnColor</item>
+        <item name="android:textSize">@dimen/_18sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="statusStyles">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:textSize">@dimen/_25sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/btnColor</item>
     </style>
 
 
     <style name="btnStyle">
-        <item name="android:layout_width">100dp</item>
-        <item name="android:layout_height">100dp</item>
-        <item name="marginHorizontal">5dp</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:padding">10dp</item>
+        <item name="android:layout_width">@dimen/_80dp</item>
+        <item name="android:layout_height">@dimen/_80dp</item>
+        <item name="marginHorizontal">@dimen/_5dp</item>
+        <item name="android:textSize">@dimen/_30sp</item>
+        <item name="android:padding">@dimen/_20dp</item>
+        <item name="elevation">@dimen/_20dp</item>
+        <item name="android:layout_margin">@dimen/_5dp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
+
+
+
+    <style name="navBtnStyle">
+        <item name="android:layout_width">@dimen/_80dp</item>
+        <item name="android:layout_height">@dimen/_80dp</item>
+        <item name="marginHorizontal">@dimen/_5dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:padding">@dimen/_5dp</item>
+        <item name="elevation">@dimen/_20dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
 </resources>
