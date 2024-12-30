@@ -90,19 +90,17 @@
     </androidx.cardview.widget.CardView>
 
 
-
-
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40dp"
-        android:orientation="horizontal"
         android:layout_marginTop="@dimen/_5dp"
-        android:weightSum="2.5"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal"
+        android:weightSum="2.5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/player1Img_card_1"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1Img_card_1">
 
 
         <TextView
@@ -111,50 +109,49 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/line_shape_right_cut"
             android:gravity="start|center"
             android:paddingHorizontal="@dimen/_20dp"
             android:paddingVertical="@dimen/_3dp"
-            android:background="@drawable/line_shape_right_cut"
             android:text="@string/player1"
-            android:textColor="@color/white"/>
-
+            android:textColor="@color/white" />
 
 
         <TextView
             android:id="@+id/player1_score"
             style="@style/textVStyles"
-            android:gravity="center"
             android:layout_width="0dp"
-            android:layout_weight=".2"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_10dp"
-            android:textSize="@dimen/_25sp"
+            android:layout_weight=".2"
+            android:gravity="center"
             android:text="0"
+            android:textSize="@dimen/_25sp"
             app:layout_constraintBottom_toBottomOf="@+id/player1tv"
             app:layout_constraintStart_toEndOf="@+id/player1tv" />
 
         <TextView
             style="@style/textVStyles"
-            android:gravity="center"
-            android:layout_gravity="center"
             android:layout_width="0dp"
-            android:layout_weight=".1"
             android:layout_height="match_parent"
-            android:textSize="@dimen/_25sp"
+            android:layout_gravity="center"
+            android:layout_weight=".1"
+            android:gravity="center"
             android:text="|"
+            android:textSize="@dimen/_25sp"
             app:layout_constraintBottom_toBottomOf="@+id/player1tv"
             app:layout_constraintStart_toEndOf="@+id/player1tv" />
 
         <TextView
             android:id="@+id/player2_score"
             style="@style/textVStyles"
-            android:gravity="center"
             android:layout_width="0dp"
-            android:layout_weight=".2"
-            android:textSize="@dimen/_25sp"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/_10dp"
+            android:layout_weight=".2"
+            android:gravity="center"
             android:text="0"
+            android:textSize="@dimen/_25sp"
             app:layout_constraintBottom_toBottomOf="@+id/player2tv"
             app:layout_constraintEnd_toStartOf="@+id/player2tv" />
 
@@ -164,17 +161,66 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/line_shape_left_cut"
             android:gravity="end|center"
             android:paddingHorizontal="@dimen/_20dp"
             android:paddingVertical="@dimen/_3dp"
-            android:background="@drawable/line_shape_left_cut"
-            android:textColor="@color/white"
             android:text="@string/player2"
-            />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/human_clock_card"
+        android:layout_width="@dimen/_60dp"
+        android:layout_height="@dimen/_60dp"
+        android:layout_marginTop="@dimen/_40dp"
+        android:layout_marginStart="@dimen/_5dp"
+        android:elevation="@dimen/_10dp"
+        app:cardCornerRadius="@dimen/_60dp"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/human_clock_anim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:visibility="invisible"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/clock"
+            app:lottie_repeatMode="restart" />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/robot_clock_card"
+        android:layout_width="@dimen/_60dp"
+        android:layout_height="@dimen/_60dp"
+        android:layout_marginTop="@dimen/_40dp"
+        android:layout_marginEnd="@dimen/_5dp"
+        android:elevation="@dimen/_10dp"
+        android:visibility="invisible"
+        app:cardCornerRadius="@dimen/_60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/robot_clock_anim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:visibility="invisible"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/clock"
+            app:lottie_repeatMode="restart" />
+    </androidx.cardview.widget.CardView>
 
 
     <GridLayout

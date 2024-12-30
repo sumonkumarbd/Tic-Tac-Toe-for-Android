@@ -54,10 +54,12 @@ public class OneVsOne extends MainActivity {
                         player1Sound.start();
                         buttons[row][col].setText("X");
                         player1Turn = false;
+                        clockSystem(false);
                     } else if (player2Turn && buttons[row][col].getText().toString().isEmpty()) {
                         buttons[row][col].setText("O");
                         player2Sound.start();
                         player1Turn = true;
+                        clockSystem(true);
                     }//===Condition end===
 
                     if (checkWin("X")) {
@@ -66,6 +68,7 @@ public class OneVsOne extends MainActivity {
                         statusTxt.startAnimation(slideInLeft);
                         statusTxt2.startAnimation(slideInRight);
                         winSound.start();
+                        clockVisibilityGone();
                         player1_score.setText(String.valueOf(++first_score));
                         isWinSet(first_score,"Player 1 is");
                         runnable = this::newGame;
@@ -77,6 +80,7 @@ public class OneVsOne extends MainActivity {
                         statusTxt.startAnimation(slideInLeft);
                         statusTxt2.startAnimation(slideInRight);
                         winSound.start();
+                        clockVisibilityGone();
                         player2_score.setText(String.valueOf(++second_score));
                         isWinSet(second_score,"Player 2 is");
                         runnable = this::newGame;

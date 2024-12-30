@@ -37,12 +37,12 @@ public class MainActivity extends AppCompatActivity {
     Runnable runnable;
     int first_score, second_score;
     int count = 0;
-    MediaPlayer player1Sound, player2Sound, winSound, drawSound, newGameSound;
+    MediaPlayer player1Sound, player2Sound, winSound, drawSound, newGameSound,amma_behen,noni,aain,humayora;
     AlphaAnimation fadeIn;
     Animation slideInLeft,slideInRight,slideInTop,slideInBottom;
-    LottieAnimationView robot_lottie,happy_lottie,player2_pro_lottie;
+    LottieAnimationView robot_lottie,happy_lottie,player2_pro_lottie, robot_clock_anim,human_clock_anim;
     VideoView bottom_VideoView;
-    CardView player1Img_card_1,player2Img_card_2;
+    CardView player1Img_card_1,player2Img_card_2,human_clock_card,robot_clock_card;
 
 
     @Override
@@ -87,17 +87,26 @@ public class MainActivity extends AppCompatActivity {
         player2_score = findViewById(R.id.player2_score);
         player1Img_card_1 = findViewById(R.id.player1Img_card_1); // Identifying xml view id (player1Img_card_1) in java as player1Img_card_1.
         player2Img_card_2 = findViewById(R.id.player2Img_card_2); // Identifying xml view id (player2Img_card_2) in java as player2Img_card_2.
+        human_clock_card = findViewById(R.id.human_clock_card); // Identifying xml view id (human_clock_card) in java as human_clock_card.
+        robot_clock_card = findViewById(R.id.robot_clock_card); // Identifying xml view id (robot_clock_card) in java as robot_clock_card.
+
 
 //        bottom_VideoView = findViewById(R.id.bottom_VideoView); // Identifying xml view id (bottom_VideoView) in java as bottom_VideoView.
         robot_lottie = findViewById(R.id.robot_lottie);
         happy_lottie = findViewById(R.id.happy_lottie);
         player2_pro_lottie = findViewById(R.id.player2_pro_lottie); // Identifying xml view id (player2_pro_lottie) in java as player2_pro_lottie.
+        robot_clock_anim = findViewById(R.id.robot_clock_anim);
+        human_clock_anim = findViewById(R.id.human_clock_anim);
 
         player1Sound = MediaPlayer.create(this, R.raw.player1);
         player2Sound = MediaPlayer.create(this, R.raw.player2);
         winSound = MediaPlayer.create(this, R.raw.win);
         drawSound = MediaPlayer.create(this, R.raw.draw);
         newGameSound = MediaPlayer.create(this, R.raw.new_game);
+        amma_behen = MediaPlayer.create(this, R.raw.amma_bahen);
+        noni = MediaPlayer.create(this, R.raw.nani);
+        aain = MediaPlayer.create(this, R.raw.aain);
+        humayora = MediaPlayer.create(this, R.raw.humayora_sounds);
 
         slideInBottom = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
         slideInTop = AnimationUtils.loadAnimation(this, R.anim.slide_in_top);
@@ -200,6 +209,8 @@ public class MainActivity extends AppCompatActivity {
         buttons[2][2].setText("");
         buttons[2][2].setEnabled(true);
         count = 0;
+        winSound.reset();
+        drawSound.reset();
         statusTxt.setText("Let'");
         statusTxt2.setText("s Go!");
         statusTxt.startAnimation(slideInLeft);
@@ -277,5 +288,29 @@ public class MainActivity extends AppCompatActivity {
         restart.startAnimation(slideInLeft);
 
     }//animStart method end!
+
+
+    //========Public Method=========//
+    public void clockSystem(boolean isPlayer1Trun){
+        if(!isPlayer1Trun){
+            robot_clock_card.setVisibility(View.VISIBLE);
+            robot_clock_anim.setVisibility(View.VISIBLE);
+            robot_clock_anim.resumeAnimation();
+            human_clock_anim.pauseAnimation();
+        }else {
+            robot_clock_anim.pauseAnimation();
+            human_clock_card.setVisibility(View.VISIBLE);
+            human_clock_anim.setVisibility(View.VISIBLE);
+            human_clock_anim.resumeAnimation();
+        }
+    }//soundEffects method end!
+
+    //========Public Method=========//
+    public void clockVisibilityGone(){
+        robot_clock_card.setVisibility(View.GONE);
+        robot_clock_anim.setVisibility(View.GONE);
+        human_clock_card.setVisibility(View.GONE);
+        human_clock_anim.setVisibility(View.GONE);
+    }//visibl method end!
 
 }//Main

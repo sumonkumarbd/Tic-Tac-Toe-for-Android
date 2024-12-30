@@ -1,8 +1,8 @@
 package com.sumonkmr.Tic_Tac_Toe_Game;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.view.animation.AnimationUtils;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.widget.AppCompatButton;
@@ -49,6 +49,7 @@ public class VsComputer extends OneVsOne {
                         player1Sound.start();
                         buttons[row][col].setText("X");
                         player1Turn = false;
+                        clockSystem(false);
                         computerMove();
                     }
                 });
@@ -61,17 +62,28 @@ public class VsComputer extends OneVsOne {
     //========protected Method=========//
     protected void computerMove() {
         //===Condition start====
-        if(!player1Turn && !checkWin("X") && !isBordFull()){
+        if (!player1Turn && !checkWin("X") && !isBordFull()) {
             int row, col;
+            int randomValue = random.nextInt(6000 - 1000 + 1) + 1000;
             do {
                 row = random.nextInt(3);
                 col = random.nextInt(3);
             } while (!buttons[row][col].getText().toString().isEmpty() && count < 4);
             count++;
-            runnable = () -> robot_lottie.setVisibility(View.VISIBLE);
+            runnable = () -> {
+                robot_lottie.setVisibility(View.VISIBLE);
+                Log.d("computerMove", "computerMove: "+count);
+                //===Condition start====
+                    if (count > 2 && !player1Turn && randomValue > 1001 && randomValue < 2000) {
+                        aain.start();
+                    } else if (count > 2 && !player1Turn && randomValue > 4001 && randomValue < 6000) {
+                        humayora.start();
+                    }//===Condition end===
+            };
             handler.postDelayed(runnable, 500);
-            handleComputerMove(buttons, row, col);
 
+
+            handleComputerMove(buttons, row, col, randomValue);
         }//===Condition end===
 
 
@@ -84,15 +96,17 @@ public class VsComputer extends OneVsOne {
             player1_score.setText(String.valueOf(++first_score));
             winSound.start();
             player1Turn = true;
+           clockVisibilityGone();
             runnable = () -> happy_lottie.setVisibility(View.VISIBLE);
             handler.postDelayed(runnable, 500);
-            isWinSet(first_score,"You are");
+            isWinSet(first_score, "You are");
             runnable = () -> newGame();
             handler.postDelayed(runnable, 3000);
         } else if (isBordFull()) {
             statusTxt.setText("Game i");
             statusTxt2.setText("s Tie!");
             drawSound.start();
+            clockVisibilityGone();
             statusTxt.startAnimation(slideInLeft);
             statusTxt2.startAnimation(slideInRight);
             happy_lottie.setVisibility(View.GONE);
@@ -104,7 +118,8 @@ public class VsComputer extends OneVsOne {
 
 
     //========Private Method=========//
-    private void handleComputerMove(AppCompatButton[][] button, int row, int col) {
+    private void handleComputerMove(AppCompatButton[][] button, int row, int col, int randomValue) {
+        Log.d("randomValue", "handleComputerMove: " + randomValue);
         runnable = () -> {
             //===Condition start====
             if (!checkWin("X") || !isBordFull() || !player1Turn) {
@@ -112,20 +127,24 @@ public class VsComputer extends OneVsOne {
                 robot_lottie.setVisibility(View.GONE);
                 player2Sound.start();
                 player1Turn = true;
+                clockSystem(true);
             }//===Condition end===
             if (checkWin("O")) {
                 statusTxt.setText("Robot i");
                 statusTxt2.setText("s Win!");
+                robot_clock_card.setVisibility(View.GONE);
+                robot_clock_anim.setVisibility(View.GONE);
+                human_clock_card.setVisibility(View.GONE);
+                human_clock_anim.setVisibility(View.GONE);
                 statusTxt.startAnimation(slideInLeft);
                 statusTxt2.startAnimation(slideInRight);
                 player2_score.setText(String.valueOf(++second_score));
-                isWinSet(second_score,"Robot is");
+                isWinSet(second_score, "Robot is");
                 winSound.start();
                 runnable = () -> newGame();
                 handler.postDelayed(runnable, 3000);
             }
         };
-        int randomValue = random.nextInt(5000 - 1000 + 1) + 1000;
         handler.postDelayed(runnable, randomValue);
 
     }//handleComputerMove method end!

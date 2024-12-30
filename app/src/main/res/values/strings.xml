@@ -27,9 +27,8 @@
     <style name="btnStyle">
         <item name="android:layout_width">@dimen/_60dp</item>
         <item name="android:layout_height">@dimen/_60dp</item>
-        <item name="marginHorizontal">@dimen/_5dp</item>
-        <item name="android:textSize">@dimen/_15sp</item>
-        <item name="android:padding">@dimen/_10dp</item>
+        <item name="android:textSize">@dimen/_25sp</item>
+        <item name="android:padding">@dimen/_5dp</item>
         <item name="elevation">@dimen/_10dp</item>
         <item name="android:layout_margin">@dimen/_5dp</item>
         <item name="android:textColor">@color/white</item>
