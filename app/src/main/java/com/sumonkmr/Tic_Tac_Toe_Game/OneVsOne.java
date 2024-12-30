@@ -34,6 +34,7 @@ public class OneVsOne extends MainActivity {
             newGame();
         });
         player2_pro_lottie.setImageResource(R.drawable.player_2);
+        animStart();
 
     }//onCreate
 

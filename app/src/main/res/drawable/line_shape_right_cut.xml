@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient android:startColor="@color/btnColor"/>
-    <gradient android:endColor="@color/secColor"/>
-    <gradient android:type="radial"/>
+    <solid android:color="@color/secColor"/>
     <corners android:topRightRadius="@dimen/_200dp"/>
     <stroke android:width="@dimen/_1dp"/>
     <stroke android:color="@color/gray"/>

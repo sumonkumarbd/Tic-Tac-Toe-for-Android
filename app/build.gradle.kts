@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.sumonkmr.tic_tac_toe_game"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.sumonkmr.Tic_Tac_Toe_Game"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -33,7 +33,7 @@ android {
 
 dependencies {
 
-    implementation(libs.appcompat)
+    implementation(libs.appcompat.v161)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)

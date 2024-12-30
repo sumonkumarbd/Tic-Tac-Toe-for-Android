@@ -16,6 +16,7 @@ import android.widget.VideoView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     Animation slideInLeft,slideInRight,slideInTop,slideInBottom;
     LottieAnimationView robot_lottie,happy_lottie,player2_pro_lottie;
     VideoView bottom_VideoView;
+    CardView player1Img_card_1,player2Img_card_2;
 
 
     @Override
@@ -83,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
         computer_btn = findViewById(R.id.computer_btn);
         player1_score = findViewById(R.id.player1_score);
         player2_score = findViewById(R.id.player2_score);
+        player1Img_card_1 = findViewById(R.id.player1Img_card_1); // Identifying xml view id (player1Img_card_1) in java as player1Img_card_1.
+        player2Img_card_2 = findViewById(R.id.player2Img_card_2); // Identifying xml view id (player2Img_card_2) in java as player2Img_card_2.
+
 //        bottom_VideoView = findViewById(R.id.bottom_VideoView); // Identifying xml view id (bottom_VideoView) in java as bottom_VideoView.
         robot_lottie = findViewById(R.id.robot_lottie);
         happy_lottie = findViewById(R.id.happy_lottie);
@@ -250,5 +255,27 @@ public class MainActivity extends AppCompatActivity {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
     }//setRandomColor method end!
+
+
+    //========Public Method=========//
+    public void animStart(){
+        player1Img_card_1.startAnimation(slideInLeft);
+        player2Img_card_2.startAnimation(slideInRight);
+        player1tv.startAnimation(slideInLeft);
+        player1_score.startAnimation(slideInLeft);
+        player2tv.startAnimation(slideInRight);
+        player2_score.startAnimation(slideInRight);
+        buttons[0][0].startAnimation(slideInLeft);
+        buttons[0][1].startAnimation(slideInTop);
+        buttons[0][2].startAnimation(slideInRight);
+        buttons[1][0].startAnimation(slideInLeft);
+//        buttons[1][1].startAnimation();
+        buttons[1][2].startAnimation(slideInRight);
+        buttons[2][0].startAnimation(slideInLeft);
+        buttons[2][1].startAnimation(slideInBottom);
+        buttons[2][2].startAnimation(slideInRight);
+        restart.startAnimation(slideInLeft);
+
+    }//animStart method end!
 
 }//Main

@@ -5,36 +5,61 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dashboard"
     tools:context=".MainActivity">
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/oneVsOne_btn"
-        android:layout_width="match_parent"
+    <TextView
+        style="@style/textVStyles"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/navBtnStyle"
-        android:background="@drawable/btn_shape"
-        android:text="1 vs 1"
-        android:textSize="@dimen/_20sp"
-        android:layout_marginBottom="@dimen/_20sp"
-        android:layout_marginHorizontal="@dimen/_20dp"
-        app:layout_constraintBottom_toTopOf="@+id/computer_btn"
+        android:text="@string/app_name"
+        android:layout_marginTop="@dimen/_80dp"
+        android:textSize="@dimen/_40sp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/computer_btn"
-        style="@style/navBtnStyle"
-        android:background="@drawable/btn_shape"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="computer"
-        android:textSize="@dimen/_20sp"
-        android:layout_marginHorizontal="@dimen/_20dp"
-        android:layout_marginBottom="@dimen/_80dp"
+        android:layout_height="@dimen/_40dp"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/_30dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/oneVsOne_btn"
+            style="@style/navBtnStyle"
+            android:layout_width="@dimen/_140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/line_shape_right_cut"
+            android:paddingVertical="@dimen/_10dp"
+            android:paddingStart="@dimen/_10dp"
+            android:paddingEnd="@dimen/_20dp"
+            android:text="Friends"
+            android:textSize="@dimen/_16sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/computer_btn"
+            style="@style/navBtnStyle"
+            android:layout_width="@dimen/_140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/line_shape_left_cut"
+            android:paddingVertical="@dimen/_10dp"
+            android:paddingStart="@dimen/_20dp"
+            android:paddingEnd="@dimen/_10dp"
+            android:text="computer"
+            android:textSize="@dimen/_16sp" />
+    </RelativeLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

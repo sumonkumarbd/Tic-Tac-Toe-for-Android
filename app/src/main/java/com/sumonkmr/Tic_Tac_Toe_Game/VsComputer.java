@@ -30,10 +30,8 @@ public class VsComputer extends OneVsOne {
         setButtonListeners();
         player1tv.setText("   You");
         player2tv.setText("Robot");
-        restart.setOnClickListener(v -> {
-            newGame();
-        });
-
+        restart.setOnClickListener(v -> newGame());
+        animStart();
 
     }//onCreate
 
