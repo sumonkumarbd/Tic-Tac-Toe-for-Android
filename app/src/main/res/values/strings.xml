@@ -11,6 +11,7 @@
         <item name="android:textColor">@color/btnColor</item>
         <item name="android:textSize">@dimen/_15sp</item>
         <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/bangers_regular</item>
     </style>
 
     <style name="statusStyles">
@@ -19,6 +20,7 @@
         <item name="android:textSize">@dimen/_25sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/btnColor</item>
+        <item name="fontFamily">@font/bangers_regular</item>
     </style>
 
 
@@ -31,6 +33,7 @@
         <item name="elevation">@dimen/_10dp</item>
         <item name="android:layout_margin">@dimen/_5dp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/bangers_regular</item>
     </style>
 
 
@@ -42,6 +45,7 @@
         <item name="android:padding">@dimen/_5dp</item>
         <item name="elevation">@dimen/_20dp</item>
         <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/bangers_regular</item>
     </style>
 
 </resources>
