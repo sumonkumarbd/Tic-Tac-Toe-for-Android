@@ -282,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
         buttons[2][0].startAnimation(slideInLeft);
         buttons[2][1].startAnimation(slideInBottom);
         buttons[2][2].startAnimation(slideInRight);
-        restart.startAnimation(slideInLeft);
+        restart.startAnimation(slideInRight);
 
     }//animStart method end!
 
