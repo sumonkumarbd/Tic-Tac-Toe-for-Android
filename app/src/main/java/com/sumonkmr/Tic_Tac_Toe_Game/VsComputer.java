@@ -49,7 +49,7 @@ public class VsComputer extends OneVsOne {
                         player1Sound.start();
                         buttons[row][col].setText("X");
                         player1Turn = false;
-                        clockSystem(false);
+                        clockSystem(false,player1Sound);
                         computerMove();
                     }
                 });
@@ -93,14 +93,15 @@ public class VsComputer extends OneVsOne {
             statusTxt2.setText("lations!");
             statusTxt.startAnimation(slideInLeft);
             statusTxt2.startAnimation(slideInRight);
-            player1_score.setText(String.valueOf(++first_score));
+            clockSound.pause();
             winSound.start();
+            player1_score.setText(String.valueOf(++first_score));
             player1Turn = true;
            clockVisibilityGone();
             runnable = () -> happy_lottie.setVisibility(View.VISIBLE);
             handler.postDelayed(runnable, 500);
             isWinSet(first_score, "You are");
-            runnable = () -> newGame();
+            runnable = this::newGame;
             handler.postDelayed(runnable, 3000);
         } else if (isBordFull()) {
             statusTxt.setText("Game i");
@@ -123,25 +124,22 @@ public class VsComputer extends OneVsOne {
         runnable = () -> {
             //===Condition start====
             if (!checkWin("X") || !isBordFull() || !player1Turn) {
+                player2Sound.start();
                 button[row][col].setText("O");
                 robot_lottie.setVisibility(View.GONE);
-                player2Sound.start();
                 player1Turn = true;
-                clockSystem(true);
+                clockSystem(true,player1Sound);
             }//===Condition end===
             if (checkWin("O")) {
                 statusTxt.setText("Robot i");
                 statusTxt2.setText("s Win!");
-                robot_clock_card.setVisibility(View.GONE);
-                robot_clock_anim.setVisibility(View.GONE);
-                human_clock_card.setVisibility(View.GONE);
-                human_clock_anim.setVisibility(View.GONE);
+                clockVisibilityGone();
                 statusTxt.startAnimation(slideInLeft);
                 statusTxt2.startAnimation(slideInRight);
+                winSound.start();
                 player2_score.setText(String.valueOf(++second_score));
                 isWinSet(second_score, "Robot is");
-                winSound.start();
-                runnable = () -> newGame();
+                runnable = this::newGame;
                 handler.postDelayed(runnable, 3000);
             }
         };

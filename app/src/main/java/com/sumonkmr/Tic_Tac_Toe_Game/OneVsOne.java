@@ -1,11 +1,6 @@
 package com.sumonkmr.Tic_Tac_Toe_Game;
 
-import android.app.AlertDialog;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.core.graphics.Insets;
@@ -54,12 +49,12 @@ public class OneVsOne extends MainActivity {
                         player1Sound.start();
                         buttons[row][col].setText("X");
                         player1Turn = false;
-                        clockSystem(false);
+//                        clockSystem(false,player1Sound);
                     } else if (player2Turn && buttons[row][col].getText().toString().isEmpty()) {
                         buttons[row][col].setText("O");
                         player2Sound.start();
                         player1Turn = true;
-                        clockSystem(true);
+//                        clockSystem(true,player2Sound);
                     }//===Condition end===
 
                     if (checkWin("X")) {

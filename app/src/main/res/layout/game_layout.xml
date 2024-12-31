@@ -197,31 +197,6 @@
     </androidx.cardview.widget.CardView>
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/robot_clock_card"
-        android:layout_width="@dimen/_60dp"
-        android:layout_height="@dimen/_60dp"
-        android:layout_marginTop="@dimen/_40dp"
-        android:layout_marginEnd="@dimen/_5dp"
-        android:elevation="@dimen/_10dp"
-        android:visibility="invisible"
-        app:cardCornerRadius="@dimen/_60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/robot_clock_anim"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:visibility="invisible"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/clock"
-            app:lottie_repeatMode="restart" />
-    </androidx.cardview.widget.CardView>
-
 
     <GridLayout
         android:id="@+id/status_lay"

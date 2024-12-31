@@ -29,20 +29,20 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     AppCompatButton oneVsOne_btn, computer_btn, restart;
     AppCompatButton[][] buttons;
-    TextView statusTxt,statusTxt2, player1_score, player2_score, player1tv, player2tv;
+    TextView statusTxt, statusTxt2, player1_score, player2_score, player1tv, player2tv;
     boolean player1Turn = true;
     boolean player2Turn = true;
     Random random = new Random();
     Handler handler = new Handler();
-    Runnable runnable;
+    Runnable runnable,winSoundThread;
     int first_score, second_score;
     int count = 0;
-    MediaPlayer player1Sound, player2Sound, winSound, drawSound, newGameSound,amma_behen,noni,aain,humayora;
+    MediaPlayer player1Sound, player2Sound, winSound, drawSound, newGameSound, amma_behen, noni, aain, humayora, clockSound, clock_effects;
     AlphaAnimation fadeIn;
-    Animation slideInLeft,slideInRight,slideInTop,slideInBottom;
-    LottieAnimationView robot_lottie,happy_lottie,player2_pro_lottie, robot_clock_anim,human_clock_anim;
+    Animation slideInLeft, slideInRight, slideInTop, slideInBottom;
+    LottieAnimationView robot_lottie, happy_lottie, player2_pro_lottie, human_clock_anim;
     VideoView bottom_VideoView;
-    CardView player1Img_card_1,player2Img_card_2,human_clock_card,robot_clock_card;
+    CardView player1Img_card_1, player2Img_card_2, human_clock_card;
 
 
     @Override
@@ -88,14 +88,12 @@ public class MainActivity extends AppCompatActivity {
         player1Img_card_1 = findViewById(R.id.player1Img_card_1); // Identifying xml view id (player1Img_card_1) in java as player1Img_card_1.
         player2Img_card_2 = findViewById(R.id.player2Img_card_2); // Identifying xml view id (player2Img_card_2) in java as player2Img_card_2.
         human_clock_card = findViewById(R.id.human_clock_card); // Identifying xml view id (human_clock_card) in java as human_clock_card.
-        robot_clock_card = findViewById(R.id.robot_clock_card); // Identifying xml view id (robot_clock_card) in java as robot_clock_card.
 
 
 //        bottom_VideoView = findViewById(R.id.bottom_VideoView); // Identifying xml view id (bottom_VideoView) in java as bottom_VideoView.
         robot_lottie = findViewById(R.id.robot_lottie);
         happy_lottie = findViewById(R.id.happy_lottie);
         player2_pro_lottie = findViewById(R.id.player2_pro_lottie); // Identifying xml view id (player2_pro_lottie) in java as player2_pro_lottie.
-        robot_clock_anim = findViewById(R.id.robot_clock_anim);
         human_clock_anim = findViewById(R.id.human_clock_anim);
 
         player1Sound = MediaPlayer.create(this, R.raw.player1);
@@ -107,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         noni = MediaPlayer.create(this, R.raw.nani);
         aain = MediaPlayer.create(this, R.raw.aain);
         humayora = MediaPlayer.create(this, R.raw.humayora_sounds);
+        clockSound = MediaPlayer.create(this, R.raw.clock_sound);
+        clock_effects = MediaPlayer.create(this, R.raw.clock_effects);
 
         slideInBottom = AnimationUtils.loadAnimation(this, R.anim.slide_in_bottom);
         slideInTop = AnimationUtils.loadAnimation(this, R.anim.slide_in_top);
@@ -209,8 +209,6 @@ public class MainActivity extends AppCompatActivity {
         buttons[2][2].setText("");
         buttons[2][2].setEnabled(true);
         count = 0;
-        winSound.reset();
-        drawSound.reset();
         statusTxt.setText("Let'");
         statusTxt2.setText("s Go!");
         statusTxt.startAnimation(slideInLeft);
@@ -242,34 +240,33 @@ public class MainActivity extends AppCompatActivity {
         fadeIn.setRepeatMode(Animation.REVERSE);
         fadeIn.setRepeatCount(3);
         button.startAnimation(fadeIn);
-
     }//animateBtn method end!
 
     //========public Method=========//
-    public void isWinSet(int score, String whoWin){
-        if(score > 2){
+    public void isWinSet(int score, String whoWin) {
+        if (score > 2) {
             runnable = () -> {
-                Toast.makeText(this, whoWin+" win the set!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, whoWin + " win the set!", Toast.LENGTH_SHORT).show();
                 first_score = 0;
                 second_score = 0;
                 player1_score.setText("0");
                 player2_score.setText("0");
             };
-            handler.postDelayed(runnable,1000);
+            handler.postDelayed(runnable, 1000);
         }//===Condition end===
 
     }//isWinSet method end!
 
 
     //========public Method=========//
-    public int setRandomColor(){
+    public int setRandomColor() {
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256));
     }//setRandomColor method end!
 
 
     //========Public Method=========//
-    public void animStart(){
+    public void animStart() {
         player1Img_card_1.startAnimation(slideInLeft);
         player2Img_card_2.startAnimation(slideInRight);
         player1tv.startAnimation(slideInLeft);
@@ -291,26 +288,29 @@ public class MainActivity extends AppCompatActivity {
 
 
     //========Public Method=========//
-    public void clockSystem(boolean isPlayer1Trun){
-        if(!isPlayer1Trun){
-            robot_clock_card.setVisibility(View.VISIBLE);
-            robot_clock_anim.setVisibility(View.VISIBLE);
-            robot_clock_anim.resumeAnimation();
-            human_clock_anim.pauseAnimation();
-        }else {
-            robot_clock_anim.pauseAnimation();
+    public void clockSystem(boolean isPlayer1turn, MediaPlayer soundName) {
+        if (isPlayer1turn) {
             human_clock_card.setVisibility(View.VISIBLE);
             human_clock_anim.setVisibility(View.VISIBLE);
             human_clock_anim.resumeAnimation();
+            clockSound.start();
+            clockSound.setLooping(true);
+        } else {
+            human_clock_anim.pauseAnimation();
+            //===Condition start====
+            if(clockSound.isPlaying()){
+                clockSound.pause();
+            }//===Condition end===
         }
     }//soundEffects method end!
 
     //========Public Method=========//
-    public void clockVisibilityGone(){
-        robot_clock_card.setVisibility(View.GONE);
-        robot_clock_anim.setVisibility(View.GONE);
+    public void clockVisibilityGone() {
         human_clock_card.setVisibility(View.GONE);
         human_clock_anim.setVisibility(View.GONE);
-    }//visibl method end!
+        clockSound.pause();
+        clock_effects.pause();
+    }//visible method end!
+
 
 }//Main
