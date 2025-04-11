@@ -1,5 +1,5 @@
 # Tic-Tac-Toe for Android
-![Feature Image](https://github.com/sumonkumarbd/Tic-Tac-Toe-for-Android/blob/master/media/TicTacToeFeature.png)
+![Feature Image](app/src/main/res/drawable/logo.png)
 
 ## Overview
 The **Tic-Tac-Toe for Android** app brings the classic game to your phone, perfect for quick fun with friends. As the developer, I wanted to create a simple, engaging game that’s easy to play anywhere, keeping the charm of Tic-Tac-Toe alive with a modern Android twist.
